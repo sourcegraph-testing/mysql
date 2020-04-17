@@ -276,7 +276,7 @@ func BenchmarkQueryContext(b *testing.B) {
 	)
 	defer db.Close()
 	for _, p := range []int{1, 2, 3, 4} {
-		b.Run(fmt.Sprintf("%d", p), func(b *testing.B) {
+		b.Run(strconv.Itoa(p), func(b *testing.B) {
 			benchmarkQueryContext(b, db, p)
 		})
 	}
@@ -312,7 +312,7 @@ func BenchmarkExecContext(b *testing.B) {
 	)
 	defer db.Close()
 	for _, p := range []int{1, 2, 3, 4} {
-		b.Run(fmt.Sprintf("%d", p), func(b *testing.B) {
+		b.Run(strconv.Itoa(p), func(b *testing.B) {
 			benchmarkQueryContext(b, db, p)
 		})
 	}
