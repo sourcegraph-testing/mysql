@@ -16,7 +16,6 @@ import (
 	"database/sql/driver"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"math"
 	"net"
@@ -1220,7 +1219,7 @@ func TestLoadData(t *testing.T) {
 		dbt.mustExec("CREATE TABLE test (id INT NOT NULL PRIMARY KEY, value TEXT NOT NULL) CHARACTER SET utf8")
 
 		// Local File
-		file, err := ioutil.TempFile("", "gotest")
+		file, err := os.CreateTemp("", "gotest")
 		defer os.Remove(file.Name())
 		if err != nil {
 			dbt.Fatal(err)
